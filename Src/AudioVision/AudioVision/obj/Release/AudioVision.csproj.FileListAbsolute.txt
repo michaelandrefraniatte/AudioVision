@@ -2,12 +2,10 @@ C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\bin\Rele
 C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\bin\Release\AudioVision.exe
 C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\bin\Release\AudioVision.pdb
 C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\obj\Release\AudioVision.csproj.AssemblyReference.cache
-C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\obj\Release\AudioVision.csproj.SuggestedBindingRedirects.cache
 C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\obj\Release\AudioVision.Form1.resources
 C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\obj\Release\AudioVision.Properties.Resources.resources
 C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\obj\Release\AudioVision.csproj.GenerateResource.cache
 C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\obj\Release\AudioVision.csproj.CoreCompileInputs.cache
-C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\obj\Release\AudioVision.csproj.CopyComplete
 C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\obj\Release\AudioVision.exe
 C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\obj\Release\AudioVision.pdb
 C:\Users\micha\Documents\github\AudioVision\Src\V2\AudioVision\AudioVision\bin\Release\AudioVision.exe.config
@@ -45,3 +43,13 @@ C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\AudioVis
 C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\AudioVision\obj\Release\AudioVision.csproj.CopyComplete
 C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\AudioVision\obj\Release\AudioVision.exe
 C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\AudioVision\obj\Release\AudioVision.pdb
+C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\bin\Release\runtimes\win-x86\native\WebView2Loader.dll
+C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\bin\Release\runtimes\win-x64\native\WebView2Loader.dll
+C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\bin\Release\runtimes\win-arm64\native\WebView2Loader.dll
+C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\bin\Release\Microsoft.Web.WebView2.Core.dll
+C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\bin\Release\Microsoft.Web.WebView2.WinForms.dll
+C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\bin\Release\Microsoft.Web.WebView2.Wpf.dll
+C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\bin\Release\Microsoft.Web.WebView2.Core.xml
+C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\bin\Release\Microsoft.Web.WebView2.WinForms.xml
+C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\bin\Release\Microsoft.Web.WebView2.Wpf.xml
+C:\Users\micha\Documents\github\AudioVision\Src\AudioVision\AudioVision\obj\Release\AudioVis.490AC934.Up2Date
