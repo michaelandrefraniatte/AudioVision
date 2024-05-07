@@ -1,0 +1,29 @@
+<body>
+    <button onclick="start()">start</button>
+    <!-- Visualizer container -->
+    <canvas id='canvas'></canvas>
+</body>
+<script>
+    function start() {
+        var audioCtx = new AudioContext();
+        navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+            .then(stream => {
+                var audioSource = audioCtx.createMediaStreamSource(stream);
+                audioCtx.audioWorklet.addModule('bypassProcessor.js').then(() => {
+                    var audioProvider = new AudioWorkletNode(audioCtx, 'bypass-processor');
+                    audioSource.connect(audioProvider).connect(audioCtx.destination);
+                    audioProvider.port.postMessage(0);
+                    audioProvider.port.onmessage = (e) => {
+                        console.log(e.data.currentChunk);
+                        audioProvider.port.postMessage(1);
+                    };
+                    audioProvider.onprocessorerror = (e) => {
+                        console.log(e.message);
+                    }
+                }).catch((e) => {
+                    console.log(e.message);
+                });
+            })
+            .catch();
+    }
+</script>
