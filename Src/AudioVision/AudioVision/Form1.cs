@@ -23,6 +23,16 @@ namespace AudioVision
         {
             InitializeComponent();
         }
+        [DllImport("USER32.DLL")]
+        public static extern int SetWindowLong(IntPtr hWnd, int nIndex, uint dwNewLong);
+        [DllImport("user32.dll")]
+        static extern bool DrawMenuBar(IntPtr hWnd);
+        [DllImport("user32.dll", EntryPoint = "SetWindowPos")]
+        public static extern IntPtr SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int Y, int cx, int cy, int wFlags);
+        [DllImport("user32.dll")]
+        static extern IntPtr GetForegroundWindow();
+        [DllImport("user32.dll")]
+        public static extern bool GetAsyncKeyState(Keys vKey);
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         public static extern uint TimeBeginPeriod(uint ms);
         [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
@@ -52,10 +62,42 @@ namespace AudioVision
         public WebView2 webView21 = new WebView2();
         private static int width = Screen.PrimaryScreen.Bounds.Width;
         private static int height = Screen.PrimaryScreen.Bounds.Height;
+        private const int GWL_STYLE = -16;
+        private const uint WS_BORDER = 0x00800000;
+        private const uint WS_CAPTION = 0x00C00000;
+        private const uint WS_SYSMENU = 0x00080000;
+        private const uint WS_MINIMIZEBOX = 0x00020000;
+        private const uint WS_MAXIMIZEBOX = 0x00010000;
+        private const uint WS_OVERLAPPED = 0x00000000;
+        private const uint WS_POPUP = 0x80000000;
+        private const uint WS_TABSTOP = 0x00010000;
+        private const uint WS_VISIBLE = 0x10000000;
+        private static int[] wd = { 2, 2 };
+        private static int[] wu = { 2, 2 };
+        public static void valchanged(int n, bool val)
+        {
+            if (val)
+            {
+                if (wd[n] <= 1)
+                {
+                    wd[n] = wd[n] + 1;
+                }
+                wu[n] = 0;
+            }
+            else
+            {
+                if (wu[n] <= 1)
+                {
+                    wu[n] = wu[n] + 1;
+                }
+                wd[n] = 0;
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
+            Task.Run(() => StartWindowTitleRemover());
         }
         private async void Form1_Shown(object sender, EventArgs e)
         {
@@ -73,6 +115,30 @@ namespace AudioVision
             webView21.DefaultBackgroundColor = Color.Transparent;
             this.pictureBox1.Controls.Add(webView21);
             Task.Run(() => GetAudioByteArray());
+        }
+        private void StartWindowTitleRemover()
+        {
+            while (true)
+            {
+                valchanged(0, GetAsyncKeyState(Keys.PageDown));
+                if (wu[0] == 1)
+                {
+                    int width = Screen.PrimaryScreen.Bounds.Width;
+                    int height = Screen.PrimaryScreen.Bounds.Height;
+                    IntPtr window = GetForegroundWindow();
+                    SetWindowLong(window, GWL_STYLE, WS_SYSMENU);
+                    SetWindowPos(window, -2, 0, 0, width, height, 0x0040);
+                    DrawMenuBar(window);
+                }
+                valchanged(1, GetAsyncKeyState(Keys.PageUp));
+                if (wu[1] == 1)
+                {
+                    IntPtr window = GetForegroundWindow();
+                    SetWindowLong(window, GWL_STYLE, WS_CAPTION | WS_POPUP | WS_BORDER | WS_SYSMENU | WS_TABSTOP | WS_VISIBLE | WS_OVERLAPPED | WS_MINIMIZEBOX | WS_MAXIMIZEBOX);
+                    DrawMenuBar(window);
+                }
+                System.Threading.Thread.Sleep(100);
+            }
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
